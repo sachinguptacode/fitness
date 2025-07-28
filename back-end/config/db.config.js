@@ -2,8 +2,10 @@ import mongoose from "mongoose";
 
 const dbConnect = async () => {
   try {
-    let db = await mongoose.connect("mongodb://127.0.0.1:27017/Book");
-    console.log("db is connected : ", db.connection.name);
+    mongoose.connection.on("connected", () =>
+      console.log("Database Connected")
+    );
+    await mongoose.connect(`${process.env.MONGODB_URI}/fitness`);
   } catch (error) {
     console.log("db is not connect : ", error);
   }

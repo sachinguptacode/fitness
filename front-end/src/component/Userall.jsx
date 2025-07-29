@@ -8,7 +8,7 @@ const Userall = () => {
     const [getId, setGetId] = useState(); 
     let getAllUSer = async () => {
         try {
-            let res = await axios.get('http://localhost:3000/api/v1/get-all-user');
+            let res = await axios.get('https://fitness-1-s5wl.onrender.com/api/v1/get-all-user');
             if (res.status == 201 || res.status == 200) {
                 // console.log(res.data);
                 setAllUser(res.data.data);

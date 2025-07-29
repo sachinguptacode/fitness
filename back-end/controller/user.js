@@ -89,6 +89,11 @@ const loginUser = async (req, res) => {
         message: "your password is not match please check the password",
       });
     }
+
+    return res.status(201).json({
+      message: "login successfull",
+      data: userExits,
+    });
   } catch (error) {
     console.log("user is not login ", error);
     return res.status(401).json("something went wrong");

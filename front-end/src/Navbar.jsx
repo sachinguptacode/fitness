@@ -9,10 +9,10 @@ const Navbar = () => {
 
   const navItems = [
     { label: 'Home', path: '/' },
-    { label: 'About Us', path: '/about-us' },
+    { label: 'About Us', path: '/about' },
     { label: 'Services', path: '/services' },
     { label: 'Blog', path: '/blog' },
-    { label: 'Contact', path: '/contact' }
+    { label: 'Contact', path: '/contact' },
   ];
 
   return (
@@ -30,7 +30,7 @@ const Navbar = () => {
             {navItems.map((item) => (
               <NavLink
                 key={item.label}
-                to= "/"
+                to={item.path}
                 className={({ isActive }) =>
                   `text-sm transition duration-200 ${
                     isActive ? 'text-blue-400' : 'hover:text-gray-300'
@@ -67,17 +67,18 @@ const Navbar = () => {
           {navItems.map((item) => (
             <NavLink
               key={item.label}
-              to='/about-us'
+              to={item.path}
+              onClick={() => setIsOpen(false)}
               className={({ isActive }) =>
                 `block text-sm ${
                   isActive ? 'text-blue-400' : 'text-white hover:text-gray-300'
                 }`
               }
-              onClick={() => setIsOpen(false)} // close menu on click
             >
               {item.label}
             </NavLink>
           ))}
+
           {/* Mobile search */}
           <div className="relative">
             <input
